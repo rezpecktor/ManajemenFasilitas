@@ -58,19 +58,29 @@ if (isset($_POST['login'])) {
      <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
      <!-- My CSS -->
      <link rel="stylesheet" href="css/login.css">
-
      <title>From Login</title>
+     <style>
+          .bg-custom{
+               background-color: #D8AE7E;
+               border-radius: 3px;
+          }
+          body{
+               background-color: #6F4E37;
+          }
+          .fsa{
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+     </style>
 </head>
 
-<body background="img/bg/bck.png">
-
+<body>
      <div class="container">
           <div class="row my-5">
-               <div class="col-md-6 text-center login bg-dark">
-                    <h4 class="fw-bold" style="color: white;">Login Dulu Banh:)</h4>
+               <div class="col-md-6 text-center login bg-custom">
+                    <h4 class="fw-bold fsa" style="color: white;">Sistem Informasi Manajemen Fasilitas</h4>
                     <!-- Ini Error jika tidak bisa login -->
                     <?php if (isset($error)) : ?>
-                    <?php echo '<script>alert("Username atau Password Salah!");</script>'; ?>
+                    <?php echo '<script>alert("Username atau Password Salah!");</scrip>'; ?>
                     <?php endif; ?>
                     <form action="" method="post">
                          <div class="form-group user">
@@ -88,7 +98,7 @@ if (isset($_POST['login'])) {
                          </div>
                          <button class="btn btn-primary text-uppercase" type="submit" name="login">Login</button>
                          <a href="registrasi.php" class="btn btn-danger text-uppercase"><i
-                                   class="bi bi-pencil-square"></i>SIGN UP</a> |
+                                   class="bi bi-pencil-square"></i>SIGN UP</a>
 
                     </form>
                </div>

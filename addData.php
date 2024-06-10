@@ -51,30 +51,31 @@ if (isset($_POST['simpan'])) {
      <title>Tambah Data</title>
 </head>
 
-<body background="img/bg/bck.png">
+<body style="background-color: #AF8F6F;">
      <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-uppercase">
-          <div class="container">
-               <a class="navbar-brand" href="index.php">Sistem Informasi Manajemen Fasilitas</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                         <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="index.php">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="#about">About</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="logout.php">Logout</a>
-                         </li>
-                    </ul>
-               </div>
-          </div>
-     </nav>
+     <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="index.php" style="font-size: 24px; font-weight: bold; color: #333;"><h5>SISTEM INFORMASI MANAJEMEN FASILITAS</h5></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.php" style="color: #333; transition: color 0.2s ease;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about" style="color: #333; transition: color 0.2s ease;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php" style="color: #333; transition: color 0.2s ease;">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
      <!-- Close Navbar -->
 
      <!-- Container -->
@@ -161,15 +162,14 @@ if (isset($_POST['simpan'])) {
 
      <!-- Footer -->
      <div class="container-fluid">
-          <div class="row bg-dark text-white text-center">
+          <div class="row bg-white text-black text-center">
                <div class="col my-2" id="about">
                     <br><br><br>
-                    <h4 class="fw-bold text-uppercase">About</h4>
 
-                    <p>
-                         Pembuat:
-                         1. Farhan Ade Atalarik (2135038)
-                    </p>
+                    <h3>
+                        UNIVERSITAS MUHAMMADIYAH RIAU
+                    </h3>
+                    <br><br>
                </div>
           </div>
      </div>
@@ -188,7 +188,7 @@ if (isset($_POST['simpan'])) {
      gsap.to('.Tambah_data', {
           duration: 2,
           delay: 1,
-          text: '<i class="bi bi-person-plus-fill"></i>Tambah Data Siswa :)'
+          text: '<i class="bi bi-person-plus-fill"></i>Tambah Data Aset'
      })
      gsap.from('.navbar', {
           duration: 1,

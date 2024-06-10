@@ -40,30 +40,30 @@ $siswa = query("SELECT * FROM siswa ORDER BY nis DESC");
      <title>Home</title>
 </head>
 
-<body background="img/bg/bck.png">
+<body style="background-color: #AF8F6F;">
      <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-uppercase">
-          <div class="container">
-               <a class="navbar-brand" href="index.php">Sistem Informasi Manajemen Fasilitas</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                         <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="#">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="#about">About</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="logout.php">Logout</a>
-                         </li>
-                    </ul>
-               </div>
-          </div>
-     </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="index.php" style="font-size: 24px; font-weight: bold; color: #333;"><h5>SISTEM INFORMASI MANAJEMEN FASILITAS</h5></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.php" style="color: #333; transition: color 0.2s ease;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about" style="color: #333; transition: color 0.2s ease;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php" style="color: #333; transition: color 0.2s ease;">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
      <!-- Close Navbar -->
 
      <!-- Container -->
@@ -78,9 +78,9 @@ $siswa = query("SELECT * FROM siswa ORDER BY nis DESC");
                <div class="col-md">
                     <a href="addData.php" class="btn btn-primary" data-aos="fade-right" data-aos-duration="800"
                          data-aos-delay="1200"><i class="bi bi-person-plus-fill"></i>Tambah Data</a>
-                    <a href="export.php" target="_blank" class="btn btn-success ms-1" data-aos="fade-left"
+                    <!-- <a href="export.php" target="_blank" class="btn btn-success ms-1" data-aos="fade-left"
                          data-aos-duration="1000" data-aos-delay="1600"><i
-                              class="bi bi-file-earmark-spreadsheet-fill"></i>Ekspor ke Excel</a>
+                              class="bi bi-file-earmark-spreadsheet-fill"></i>Ekspor ke Excel</a> -->
                </div>
           </div>
           <div class="row my-3" data-aos="fade" data-aos-duration="1000" data-aos-delay="2000">
@@ -92,42 +92,39 @@ $siswa = query("SELECT * FROM siswa ORDER BY nis DESC");
                                    <th>No.</th>
                                    <th>Nama Barang</th>
                                    <th>Kondisi</th>
-                                   <th>Tanggal</th>
+                                   <th>Tanggal Perbaikan</th>
                                    <th>Ruangan</th>
                                    <th>Detail</th>
                               </tr>
                          </thead>
                          <tbody>
-                              <?php $no = 1; ?>
-                              <?php foreach ($siswa as $row) : ?>
-                              <tr class="table-secondary text-dark">
-                                   <td><?= $no++; ?></td>
-                                   <td><?= $row['nama']; ?></td>
-                                   <td><?= $row['kondisi']; ?></td>
-                                   <?php
-                                $now = time();
-                                $timeTahun = strtotime($row['tanggal']);
-                                $setahun = 31536000;
-                                $hitung = ($now - $timeTahun) / $setahun;
-                                ?>
-                                   <td><?= floor($hitung); ?> Tahun</td>
-                                   <td><?= $row['ruangan']; ?></td>
-                                   <td>
-                                        <button class="btn btn-success btn-sm text-white detail"
-                                             data-id="<?= $row['nis']; ?>" style="font-weight: 600;"><i
-                                                  class="bi bi-info-circle-fill" data-aos="fade-right"
-                                                  data-aos-duration="800"></i>Detail</button> |
+                             <?php $no = 1;?>
+<?php foreach ($siswa as $row) :?>
+<tr class="table-secondary text-dark">
+    <td><?= $no++;?></td>
+    <td><?= $row['nama'];?></td>
+    <td><?= $row['kondisi'];?></td>
+    <?php
+    $tanggal = date("d-m-Y", strtotime($row['tanggal']));
+  ?>
+    <td><?= $tanggal;?></td>
+    <td><?= $row['ruangan'];?></td>
+    <td>
+        <button class="btn btn-success btn-sm text-white detail"
+            data-id="<?= $row['nis'];?>" style="font-weight: 600;"><i
+                class="bi bi-info-circle-fill" data-aos="fade-right"
+                data-aos-duration="800"></i>Detail</button> |
 
-                                        <a href="ubah.php?nis=<?= $row['nis']; ?>" class="btn btn-warning btn-sm"
-                                             style="font-weight: 600;"><i class="bi bi-pencil-square"></i>Ubah</a> |
+        <a href="ubah.php?nis=<?= $row['nis'];?>" class="btn btn-warning btn-sm"
+            style="font-weight: 600;"><i class="bi bi-pencil-square"></i>Ubah</a> |
 
-                                        <a href="hapus.php?nis=<?= $row['nis']; ?>" class="btn btn-danger btn-sm"
-                                             style="font-weight: 600;"
-                                             onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama']; ?> ?');"><i
-                                                  class="bi bi-trash-fill"></i>Hapus</a>
-                                   </td>
-                              </tr>
-                              <?php endforeach; ?>
+        <a href="hapus.php?nis=<?= $row['nis'];?>" class="btn btn-danger btn-sm"
+            style="font-weight: 600;"
+            onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama'];?>?');"><i
+                class="bi bi-trash-fill"></i>Hapus</a>
+    </td>
+</tr>
+<?php endforeach;?>
                          </tbody>
                     </table>
                </div>
@@ -152,14 +149,13 @@ $siswa = query("SELECT * FROM siswa ORDER BY nis DESC");
 
      <!-- Footer -->
      <div class="container-fluid">
-          <div class="row bg-dark text-white text-center">
+          <div class="row text-black text-center" style="background-color: #fafdfc;">
                <div class="col my-2" id="about">
-                    <h4 class="fw-bold text-uppercase">About</h4>
                     <br><br><br>
-                    <p>
-                         Pembuat:
-                         1. Farhan Ade Atalarik (2135038)
-                    </p>
+                    <h3>
+                         UNIVERSITAS MUHAMMADIYAH RIAU
+                    </h3>
+                    <br><br>
                </div>
           </div>
      </div>
@@ -218,7 +214,7 @@ $siswa = query("SELECT * FROM siswa ORDER BY nis DESC");
      gsap.to('.data_siswa', {
           duration: 1,
           delay: 0.6,
-          text: 'Data Siswa :)'
+          text: 'Sistem Informasi Manajemen Fasilitas'
      })
      gsap.from('.navbar', {
           duration: 1,
